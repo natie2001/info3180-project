@@ -1,19 +1,27 @@
 <script setup>
-import { ref } from "vue";
-
-let message = ref("Hello World! This is a VueJS and Flask Starter Template.")
-
+import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-    <div class="container">
-      <div class="text-center">
-        <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-        <h1>{{ message }}</h1>
-      </div>
+  <section class="text-center py-5">
+    <h1 class="display-1 fw-bold text-primary">
+      DriftDater
+    </h1>
+
+    <p class="lead mt-3">
+      Find meaningful connections near you.
+    </p>
+
+    <div class="mt-4">
+      <RouterLink to="/register" class="btn btn-primary btn-lg me-3">
+        Get Started
+      </RouterLink>
+
+      <RouterLink to="/login" class="btn btn-outline-dark btn-lg">
+        Login
+      </RouterLink>
     </div>
+  </section>
 </template>
 
-<style>
-/* Add any component specific styles here */
-</style>
+
