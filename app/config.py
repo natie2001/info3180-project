@@ -10,7 +10,7 @@ class AppSettings(object):
     
     # Security and File Uploads
     SECRET_KEY = os.environ.get('SECRET_KEY', 'Dr1ftD@t3r_S3cr3t!')
-    UPLOAD_FOLDER = os.environ.get('UPLOAD_FOLDER', 'app/static/uploads')
+    UPLOAD_FOLDER = os.environ.get('UPLOAD_FOLDER')
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # Enforces a 16MB maximum upload size
     
     # Database Configuration settings
