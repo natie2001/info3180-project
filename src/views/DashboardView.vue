@@ -13,7 +13,7 @@ const profiles = ref([
   },
   {
     id: 2,
-    name: 'Jordan Smith',
+    name: 'Terrica Smith',
     age: 25,
     location: 'Montego Bay',
     bio: 'Enjoys fitness, movies, gaming, and good conversation.',

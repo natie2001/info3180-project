@@ -11,7 +11,7 @@ const matches = [
   },
   {
     id: 2,
-    name: 'Jordan Smith',
+    name: 'Terrica Smith',
     age: 25,
     location: 'Montego Bay',
     sharedInterests: ['Movies', 'Fitness']
