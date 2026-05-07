@@ -22,6 +22,31 @@ import { RouterLink } from 'vue-router'
       </RouterLink>
     </div>
   </section>
+  <section class="row mt-5">
+    <div class="col-md-4">
+      <div class="card p-4 text-center">
+        <i class="bi bi-person-heart fs-1 text-primary"></i>
+        <h4>Create Profile</h4>
+        <p>Add your bio, interests, photos, and dating preferences.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card p-4 text-center">
+        <i class="bi bi-stars fs-1 text-primary"></i>
+        <h4>Find Matches</h4>
+        <p>Discover users based on age, location, and shared interests.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card p-4 text-center">
+        <i class="bi bi-chat-dots fs-1 text-primary"></i>
+        <h4>Start Chatting</h4>
+        <p>Message users after a mutual match is created.</p>
+      </div>
+    </div>
+  </section>
 </template>
 
 
