@@ -62,6 +62,10 @@ async function logout() {
               <RouterLink class="nav-link" to="/profile">Profile</RouterLink>
             </li>
 
+            <li class="nav-item">
+              <RouterLink class="nav-link" to="/saved">Saved</RouterLink>
+            </li>
+
             <li class="nav-item ms-lg-3">
               <button class="btn btn-light btn-sm rounded-pill px-3" @click="logout">
                 Logout

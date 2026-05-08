@@ -34,6 +34,33 @@ function getTargetId(profile) {
   return profile.user_id || profile.member_id
 }
 
+async function saveProfile(profile) {
+  const targetId = getTargetId(profile)
+
+  if (!targetId) {
+    alert('Could not find user ID for this profile.')
+    return
+  }
+
+  try {
+    const response = await fetch(`/api/favourites/${targetId}`, {
+      method: 'POST',
+      credentials: 'include'
+    })
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      alert(data.error || data.message || 'Could not save profile')
+      return
+    }
+
+    alert('Profile saved!')
+  } catch (err) {
+    alert('Could not connect to backend.')
+  }
+}
+
 async function likeProfile(profile) {
   const targetId = getTargetId(profile)
 
@@ -167,6 +194,11 @@ onMounted(() => {
 
           <button class="btn btn-outline-secondary" @click="passProfile(profile)">
             Pass
+          </button>
+
+          <button class="btn btn-outline-primary mt-2 w-100" @click="saveProfile(profile)">
+            <i class="bi bi-bookmark-heart"></i>
+            Save Profile
           </button>
         </div>
       </div>

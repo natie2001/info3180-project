@@ -25,7 +25,7 @@ async function loadMatches() {
     }
 
     matches.value = data.matches || data.connections || data
-    matches.value = data.count || matches.value.length
+    matchCount.value = matches.value.length
   } catch (err) {
     error.value = 'Could not connect to backend.'
   } finally {

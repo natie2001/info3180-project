@@ -5,6 +5,7 @@ const search = ref('')
 const location = ref('')
 const minAge = ref('')
 const maxAge = ref('')
+const gender = ref('')
 
 const profiles = ref([])
 const loading = ref(false)
@@ -21,6 +22,7 @@ async function searchProfiles() {
     if (location.value) params.append('location', location.value)
     if (minAge.value) params.append('min_age', minAge.value)
     if (maxAge.value) params.append('max_age', maxAge.value)
+    if (gender.value) params.append('gender', gender.value)
 
     const response = await fetch(`/api/search?${params.toString()}`, {
       credentials: 'include'
@@ -58,14 +60,35 @@ async function searchProfiles() {
         <input v-model="location" type="text" class="form-control" />
       </div>
 
+     
+
       <div class="col-md-2 mb-3">
         <label class="form-label">Min Age</label>
-        <input v-model="minAge" type="number" class="form-control" />
+        <select v-model="minAge" class="form-select">
+          <option value="">Any</option>
+          <option v-for="age in 43" :key="age + 17" :value="age + 17">
+             {{ age + 17 }}
+          </option>
+        </select>
       </div>
 
       <div class="col-md-2 mb-3">
         <label class="form-label">Max Age</label>
-        <input v-model="maxAge" type="number" class="form-control" />
+        <select v-model="maxAge" class="form-select">
+          <option value="">Any</option>
+          <option v-for="age in 43" :key="age + 17" :value="age + 17">
+            {{ age + 17 }}
+          </option>
+          </select>
+      </div>
+
+      <div class="col-md-2 mb-3">
+        <label class="form-label">Gender</label>
+        <select v-model="gender" class="form-select">
+          <option value="">Any</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
       </div>
 
       <div class="col-md-1 d-flex align-items-end">
