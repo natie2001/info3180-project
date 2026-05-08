@@ -1,6 +1,6 @@
 from app import app, db
 from app.models import Member, UserDetail, Tag, SwipeAction, Connection, DirectMessage, SavedProfile
-from flask import request, jsonify, session, send_from_directory
+from flask import request, jsonify, session, send_from_directory, current_app
 from functools import wraps
 import os
 
@@ -229,10 +229,16 @@ def modify_profile(target_id):
     db.session.commit()
     return jsonify({'message': 'Detail record updated', 'profile': detail_record.to_dict()}), 200
 
-@app.route('/api/uploads/<filename>', methods=['GET'])
-def retrieve_media(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
-
+@app.route('/api/uploads/<filename>')
+def serve_uploaded_file(filename):
+    """
+    Serves user-uploaded profile pictures to the frontend.
+    """
+    # Build the exact path to your uploads folder
+    upload_folder = os.path.join(current_app.root_path, 'static', 'uploads')
+    
+    # Send the file securely
+    return send_from_directory(upload_folder, filename)
 # ─── Browse & Matching ────────────────────────────────────────────────────────
 
 @app.route('/api/browse', methods=['GET'])
