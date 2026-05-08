@@ -5,7 +5,7 @@ import { useRouter, RouterLink } from 'vue-router'
 const router = useRouter()
 
 const form = ref({
-  name: '',
+  username: '',
   email: '',
   password: '',
   confirmPassword: ''
@@ -25,19 +25,23 @@ async function register() {
   loading.value = true
 
   try {
-    const response = await fetch('http://localhost:8080/api/auth/register', {
+    const response = await fetch('/api/auth/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       credentials: 'include',
-      body: JSON.stringify(form.value)
+      body: JSON.stringify({
+        username: form.value.username,
+        email: form.value.email,
+        password: form.value.password
+      })
     })
 
     const data = await response.json()
 
     if (!response.ok) {
-      error.value = data.message || 'Registration failed'
+      error.value = data.error || data.message || 'Registration failed'
       return
     }
 
@@ -58,8 +62,8 @@ async function register() {
 
         <form @submit.prevent="register">
           <div class="mb-3">
-            <label class="form-label">Full Name</label>
-            <input v-model="form.name" type="text" class="form-control" required />
+            <label class="form-label">Username</label>
+            <input v-model="form.username" type="text" class="form-control" required />
           </div>
 
           <div class="mb-3">

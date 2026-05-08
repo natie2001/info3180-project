@@ -11,7 +11,7 @@ import MatchesView from '../views/MatchesView.vue'
 import MessagesView from '../views/MessagesView.vue'
 import ChatView from '../views/ChatView.vue'
 import SearchView from '../views/SearchView.vue'
-
+import SavedProfilesView from '../views/SavedProfilesView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,6 +39,12 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component: RegisterView
+    },
+
+    {
+      path: '/saved',
+      name: 'saved',
+      component: SavedProfilesView
     },
 
     {
