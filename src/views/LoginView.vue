@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
 
 const router = useRouter()
 
@@ -8,13 +9,14 @@ const email = ref('')
 const password = ref('')
 const error = ref('')
 const loading = ref(false)
+const auth = useAuthStore()
 
 async function login() {
   error.value = ''
   loading.value = true
 
   try {
-    const response = await fetch('http://localhost:8080/api/auth/login', {
+    const response = await fetch('/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -29,11 +31,17 @@ async function login() {
     const data = await response.json()
 
     if (!response.ok) {
-      error.value = data.message || 'Login failed'
+      error.value = data.error || data.message || 'Login failed'
       return
     }
-
-    router.push('/dashboard')
+    await auth.fetchCurrentUser()
+    
+    if (data.has_profile) {
+      router.push('/dashboard')
+    } else {
+      router.push('/profile')
+    }
+    
   } catch (err) {
     error.value = 'Could not connect to server.'
   } finally {
