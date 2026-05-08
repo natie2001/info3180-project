@@ -78,7 +78,7 @@ DriftDater allows users to register, create detailed profiles with photo uploads
 
 ## 🔐 Configuration
 
-Create a `.env` file in the project root. This file is excluded from version control for security.
+Create a `.env` file in the project root. This file is excluded from version control for security. 
 
 ```env
 FLASK_DEBUG=True
