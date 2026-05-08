@@ -13,7 +13,7 @@ app.config.from_object(AppSettings)
 # Bind extensions to the app
 db.init_app(app)
 Migrate(app, db)
-CORS(app) # Ensures the Vue frontend can talk to this API
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}}, supports_credentials=True) # Ensures the Vue frontend can talk to this API
 
 # Import routing logic (placed at the bottom to prevent circular imports)
 from app import views
