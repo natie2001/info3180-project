@@ -155,11 +155,6 @@ The application uses **6 normalized tables** (3NF):
 
 ---
 
-## 🚀 Deployed Application
-
-> Coming soon — deployment to Render in progress.
-
----
 
 ## ⚠️ Known Issues & Limitations
 
