@@ -34,3 +34,7 @@ venv
 # Environment Variables
 .env
 .flaskenv
+
+# Ignore user uploads but keep the directory structure
+app/static/uploads/*
+!app/static/uploads/.gitkeep
